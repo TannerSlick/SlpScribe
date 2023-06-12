@@ -1,0 +1,103 @@
+@import "src/styles/_mixins.scss";
+
+$background: #272424;
+$textColor: whitesmoke;
+
+.mediaPlayer {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  height: 7%;
+  width: 100%;
+  bottom: 0;
+  background-color: $background;
+
+  svg {
+    margin-bottom: 1.375rem;
+    @include setContainer(2rem, 2rem);
+  }
+}
+
+.metaData {
+  @include flexRowCenter;
+
+  svg {
+    @include setContainer(3.5rem, 3.5rem);
+  }
+}
+
+.initialTime {
+  position: relative;
+  font-size: 1rem;
+  top: 52%;
+  right: 2%;
+  z-index: 2;
+}
+
+.finalTime {
+  position: relative;
+  top: 52%;
+  left: 2%;
+  font-size: 1rem;
+}
+
+.audioControls {
+  @include flexRowCenter;
+
+  .isActive {
+    background-color: rgba(6, 6, 6, 0.492);
+  }
+
+  .progress {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .progressBar {
+    height: 0.65vh;
+    width: 24.7vw;
+    margin-bottom: 1.8vh;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 15px;
+    background-color: whitesmoke;
+  }
+
+  .progressAnimation {
+    height: 100%;
+    border-radius: 15px;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.05)
+    );
+    animation: progress audio linear forwards;
+    background-color: #3b3c3a;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #21b830c1;
+    }
+  }
+}
+
+.volumeControl {
+  @include flexRowCenter;
+  margin-right: 1.875rem;
+
+  i {
+    margin-top: 1.4375rem;
+  }
+}
+
+@keyframes transitional {
+  0% {
+    transform: rotate(-360deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotate(0);
+    opacity: 1;
+  }
+}

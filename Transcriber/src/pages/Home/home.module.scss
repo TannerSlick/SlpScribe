@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+}
+
+@import "../../styles/mixins";
+
+.container {
+  @include flexRowCenter;
+  height: 100vh;
+}

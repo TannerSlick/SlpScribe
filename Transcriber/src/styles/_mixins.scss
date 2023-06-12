@@ -1,0 +1,78 @@
+@mixin setContainer($height, $width) {
+  height: $height;
+  width: $width;
+}
+
+@mixin setContainerFull {
+  height: 100%;
+  width: 100%;
+}
+
+@mixin setIsPage() {
+  min-height: 85.5%;
+  min-width: 70%;
+  backdrop-filter: blur(4px);
+  background-color: rgba(22, 23, 24, 0.852);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/**
+- normal represents the font-style.
+- 700 represents the font-weight.
+- 12px represents the font-size.
+- /1 represents the line-height.
+"- Inter" represents the font-family.
+**/
+@mixin fontStyle {
+  font: normal 700 12px/1 "Inter";
+}
+
+@mixin flexRowCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flexColCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin stripButton {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+@mixin stripInput {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+@mixin flip {
+  transform: scaleX(-1);
+}
+
+@mixin bounceInTopAnim($transY, $anim, $opacity) {
+  opacity: $opacity;
+  transform: translateY(transY);
+  animation-timing-function: $anim;
+  -webkit-transform: translateY(transY);
+  -webkit-animation-timing-function: $anim;
+}
+
+@mixin recording($rotateY, $opacity) {
+  -webkit-transform: rotateY($rotateY);
+  transform: rotateY($rotateY);
+  opacity: $opacity;
+}

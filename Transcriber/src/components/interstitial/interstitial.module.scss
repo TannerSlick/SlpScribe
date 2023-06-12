@@ -1,0 +1,73 @@
+@import "../../styles/_mixins";
+
+.interContainer {
+  min-width: 60%;
+  min-height: 85.5%;
+  text-align: center;
+  color: whitesmoke;
+
+  backdrop-filter: blur(4px);
+  background-color: rgba(22, 23, 24, 0.852);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  h1 {
+    font-weight: bold;
+    color: rgba(110, 185, 242, 0.849);
+  }
+}
+
+.interOptionsContainer {
+  display: grid;
+  gap: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.eachOption {
+  @include setContainer(150px, 250px);
+  padding: 1rem;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1rem;
+  transition: 500ms;
+  transform: translateY(0);
+  border-radius: 15px;
+  background-color: rgba(99, 93, 93, 0.16);
+
+  &:nth-child(3) {
+    display: flex;
+    align-items: center;
+    grid-column: span 2;
+    justify-self: center;
+  }
+
+  svg {
+    @include setContainer(90px, 90px);
+    animation: animatedColor 30s ease infinite;
+
+    &:hover {
+      transition: 500ms;
+      transform: translateY(-0.26vw);
+    }
+  }
+
+  &:hover {
+    transition: 500ms;
+    transform: translateY(-0.26vw);
+  }
+}
+
+@keyframes animatedColor {
+  0% {
+    color: #971fd4;
+  }
+  50% {
+    color: #711fba;
+  }
+  100% {
+    color: #5727db;
+  }
+}

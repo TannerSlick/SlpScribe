@@ -1,0 +1,250 @@
+@import "../../../styles/_mixins";
+
+$background: linear-gradient(
+  184.59deg,
+  #272626 13.46%,
+  rgba(2, 2, 2, 0.865) 86.54%
+);
+$SLP: #4bc0c8;
+$SCRIBE: #c1d7f5;
+$searchBGColor: #2f2f2f;
+$searchPicColor: #474b4f;
+$findTranscriptBtn: #595d63;
+$defaultTxt: whiteSmoke;
+$activeBG: #007aff;
+$linkCol: #989a9d;
+$border: rgba(9, 36, 75, 0.2);
+$hoverBG: #77b9ffc6;
+
+@mixin headerText {
+  font-size: 1.6rem;
+  text-shadow: 0 2% 2% rgba(0, 0, 0, 0.25);
+}
+
+@mixin regularText {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@mixin activePage {
+  color: $defaultTxt;
+  background-color: $activeBG;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.leftNavBar {
+  position: relative;
+  @include flexCol;
+  min-height: 85.5vh;
+  min-width: 11vw;
+  padding: 0rem;
+  border: 1px solid $border;
+  border-radius: 25px 0px 0px 25px;
+  background: $background;
+  box-shadow: 0px 4px 4px rgba(0.25, 0.25, 0.25, 0.25);
+
+  &__branding {
+    @include flexRowCenter;
+    @include headerText;
+    border-radius: 25px 0px 0px 0px;
+
+    img {
+      @include setContainer(5vh, 5vw);
+    }
+
+    p,
+    img:first-of-type {
+      position: relative;
+      top: 0.55em;
+      color: $SLP;
+    }
+
+    p {
+      top: 0.4em;
+      color: $SCRIBE;
+    }
+  }
+}
+
+.branding {
+  @include flexRowCenter;
+  font-size: 1.6rem;
+  text-shadow: 0 2% 2% rgba(0, 0, 0, 0.25);
+  border-radius: 25px 0px 0px 0px;
+
+  img {
+    @include setContainer(3vh, 1.6vw);
+  }
+
+  img:first-of-type,
+  p {
+    position: relative;
+    top: 0.55em;
+
+    &:nth-of-type(1) {
+      color: $SLP;
+    }
+
+    &:nth-of-type(2) {
+      color: $SCRIBE;
+    }
+  }
+
+  p {
+    top: 0.4em;
+  }
+
+  svg {
+    @include setContainer(3vh, 1.65vw);
+  }
+
+  .collapsed,
+  .isFlipped {
+    position: absolute;
+    @include flexRowCenter;
+    @include setContainer(3vh, 1.7vw);
+    @include stripButton;
+    top: 6vh;
+    right: 0vw;
+    cursor: pointer;
+    border-radius: 25px 0px 0px 25px;
+    color: $defaultTxt;
+    background: linear-gradient(
+      180deg,
+      #127329 0%,
+      rgba(66, 170, 90, 0.74) 100%
+    );
+  }
+
+  .isFlipped {
+    @include flip;
+    border-radius: 0px 25px 25px 0px;
+  }
+}
+
+.search {
+  position: relative;
+  @include flexRowCenter;
+  margin-top: 1vh;
+
+  div:nth-of-type(1) > svg {
+    position: absolute;
+    width: 2vw;
+    top: 63%;
+    color: $searchPicColor;
+    @include stripInput;
+    z-index: 1;
+
+    &:first-child {
+      left: 0.85vw;
+    }
+
+    &:nth-child(2) {
+      color: $searchPicColor;
+      left: 38px;
+    }
+  }
+
+  input:nth-of-type(1) {
+    position: relative;
+    @include setContainer(40px, 160px);
+    top: 17px;
+    margin: 5px;
+    padding-left: 55px;
+    border-style: none;
+    border-radius: 5px;
+    @include fontStyle;
+    color: $defaultTxt;
+    background-color: $searchBGColor;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  button:nth-of-type(1) {
+    position: absolute;
+    width: 30px;
+    right: 30px;
+    top: 64%;
+    color: $findTranscriptBtn;
+    @include stripButton;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.activeLink {
+  @include activePage();
+}
+
+.navLinks {
+  margin-top: 1.5vh;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  color: $linkCol;
+  cursor: pointer;
+
+  svg {
+    margin-left: 0.5vw;
+    margin-right: 10px;
+  }
+
+  ul {
+    padding: 10px;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    
+    &:hover {
+      transform: scale(1);
+      color: $defaultTxt;
+      background-color: #77b9ffc6;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+      width: 100%;
+      height:75%;
+    }
+  }
+}
+
+.miniAudioContainer {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  color: $defaultTxt;
+  cursor: pointer;
+  background-color: #302f2f74;
+  border-radius: 0px 0px 0px 25px;
+  @include setContainer(106px, 276px);
+
+  svg {
+    @include setContainer(40px, 40px);
+    margin-bottom: 10px;
+  }
+}
+
+.logoutButton {
+  width: 100px;
+  height: 50px;
+  background-color: transparent;
+  color: $defaultTxt;
+  text-align: center;
+  justify-content: center;
+}
